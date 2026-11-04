@@ -1,0 +1,11 @@
+{
+  "rewrites": [{ "source": "/hq-6961c1e148", "destination": "/api/hq" }],
+  "functions": { "api/hq.js": { "includeFiles": "private/**" } },
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "same-origin" },
+      { "key": "X-Frame-Options", "value": "DENY" }
+    ] }
+  ]
+}
