@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axion DMS – Agreement &amp; Registration</title>
+<style>
+:root{--bg:#eef1f3;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#0e6b63;--acc2:#0a4f49;--sig:#1b3a9e;--err:#b3261e;--ok:#e7f4f1}
+@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#182229;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#3cb3a6;--acc2:#2c9488;--sig:#8fa8ff;--err:#ff8a80;--ok:#14302d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:1.9rem}h2{font-size:1.25rem;margin-bottom:12px}
+.lead{color:var(--mute);margin:8px 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:16px}
+.points{list-style:none;margin:0;padding:0}
+.points li{padding:12px 0 12px 16px;border-bottom:1px solid var(--line);border-left:3px solid var(--acc);margin-bottom:8px;border-radius:0;background:var(--ok);padding-right:12px;border-bottom:0}
+.points b{display:block}
+.pdf{display:inline-block;margin-top:8px;color:var(--acc);font-weight:600}
+label{display:block;font-weight:600;font-size:.92rem;margin:14px 0 4px}
+label small{font-weight:400;color:var(--mute)}
+input,select,textarea{width:100%;font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 12px}
+input:focus,select:focus,textarea:focus,button:focus-visible,canvas:focus-visible{outline:3px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+#pad{width:100%;height:170px;background:#fff;border:1.5px dashed var(--mute);border-radius:8px;touch-action:none;display:block;cursor:crosshair}
+.padbar{display:flex;justify-content:space-between;color:var(--mute);font-size:.85rem;margin-top:4px}
+.link{background:none;border:0;color:var(--acc);font:inherit;font-weight:600;cursor:pointer;padding:0}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin:12px 0}
+.chk input{width:20px;height:20px;margin-top:3px;flex:none}
+.btn{width:100%;background:var(--acc);color:#fff;border:0;border-radius:8px;font:inherit;font-weight:700;padding:14px;cursor:pointer;margin-top:10px}
+.btn:hover{background:var(--acc2)}.btn:disabled{opacity:.6;cursor:wait}
+.btn.alt{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+#err{color:var(--err);font-weight:600;margin-top:12px;min-height:1.2em}
+.priv{font-size:.85rem;color:var(--mute);margin-top:14px}
+.code{font:700 2rem/1.1 Georgia,serif;letter-spacing:.04em;color:var(--acc);margin:6px 0 2px}
+.copy dl{display:grid;grid-template-columns:140px 1fr;gap:6px 12px;margin:14px 0}
+.copy dt{color:var(--mute)}.copy dd{margin:0;word-break:break-word}
+.copy img{background:#fff;border:1px solid var(--line);border-radius:6px;max-width:260px;height:auto}
+.hide{display:none}
+@media print{body{background:#fff;color:#000}.noprint{display:none!important}.card{border:0;padding:0}.copy dt{color:#444}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div id="form-view">
+  <h1>Axion DMS agreement</h1>
+  <p class="lead">Takes about 3 minutes: read the key points, enter your details, sign. You will get a Client ID for your records.</p>
+
+  <section class="card">
+    <h2>The key points, in plain words</h2>
+    <ul class="points">
+      <li><b>You are buying code and a one-time setup.</b>This is not hosting and not a subscription. No monthly fee from us.</li>
+      <li><b>The accounts are yours.</b>Your app runs on your own GitHub, Vercel and Supabase accounts, registered with your email. After handover we keep no passwords and no access.</li>
+      <li><b>Your data stays with you.</b>We do not host, store or see your business data. Keeping your email and accounts secure, and backing up your data, is your job.</li>
+      <li><b>GitHub, Vercel and Supabase are separate companies.</b>We do not control them. We are not responsible for their downtime, limits, price changes, suspensions or data loss.</li>
+      <li><b>We are responsible only for our code.</b>For 30 days after handover we try to fix bugs in the code, free of charge.</li>
+      <li><b>Our total liability is limited to the price you paid.</b></li>
+      <li><b>For your business only.</b>You may modify the code for your own business, but you may not resell, share or publish it.</li>
+    </ul>
+    <a class="pdf" href="/agreement.pdf" target="_blank" rel="noopener" id="pdflink">Read the full agreement (PDF)</a>
+  </section>
+
+  <form id="f" class="card" novalidate autocomplete="on">
+    <h2>Your details</h2>
+    <label for="full_name">Full name</label>
+    <input id="full_name" name="full_name" autocomplete="name" required>
+    <label for="business_name">Business / dealership name <small>(if any)</small></label>
+    <input id="business_name" name="business_name" autocomplete="organization">
+    <div class="row">
+      <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div><label for="phone">Mobile number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+    </div>
+    <label for="address">Address</label>
+    <textarea id="address" name="address" rows="2" autocomplete="street-address" required></textarea>
+    <div class="row">
+      <div><label for="id_type">ID type</label>
+        <select id="id_type" name="id_type" required><option>National ID (NID)</option><option>Passport</option><option>Driving licence</option><option>Trade licence</option></select></div>
+      <div><label for="id_number">ID number</label><input id="id_number" name="id_number" required></div>
+    </div>
+    <label for="id_photo">Photo of your ID <small>(optional, but helps us verify you)</small></label>
+    <input id="id_photo" type="file" accept="image/*">
+
+    <h2 style="margin-top:26px">Sign</h2>
+    <label for="initials">Your initials</label>
+    <input id="initials" name="initials" maxlength="6" style="max-width:140px" autocomplete="off" required>
+    <label for="pad">Draw your signature with finger or mouse</label>
+    <canvas id="pad" width="640" height="220" tabindex="0" aria-label="Signature box"></canvas>
+    <div class="padbar"><span id="padhint">Sign inside the box</span><button type="button" class="link" id="clear">Clear</button></div>
+
+    <label class="chk"><input type="checkbox" id="c_read"><span>I have read the key points and the full agreement (PDF).</span></label>
+    <label class="chk"><input type="checkbox" id="c_understood"><span>I understand I am buying code and a one-time setup, that the accounts and data are mine, that GitHub, Vercel and Supabase are outside the Seller's control, and that the Seller's liability is limited as the agreement says.</span></label>
+    <label class="chk"><input type="checkbox" id="c_accurate"><span>The details I entered are true, and I agree this electronic signature is my signature on the agreement.</span></label>
+
+    <button class="btn" id="go" type="submit">Sign and register</button>
+    <div id="err" role="alert"></div>
+    <p class="priv">We keep these details, your signature, the time and your device information only as the record of this agreement.</p>
+  </form>
+</div>
+
+<div id="done-view" class="hide">
+  <section class="card copy">
+    <p style="margin:0;color:var(--mute)">Signed and registered. Thank you.</p>
+    <div class="code" id="d_code"></div>
+    <p style="margin:0 0 4px"><b>Keep this Client ID.</b> Quote it, or your mobile number, whenever you contact us.</p>
+    <dl id="d_list"></dl>
+    <p style="margin:0 0 6px;color:var(--mute)">Signature</p>
+    <img id="d_sig" alt="Your signature">
+    <p class="priv" id="d_meta"></p>
+    <button class="btn noprint" onclick="window.print()">Print or save my signed copy</button>
+    <a class="btn alt noprint" style="display:block;text-align:center;text-decoration:none" href="/agreement.pdf" target="_blank" rel="noopener">Open the agreement (PDF)</a>
+  </section>
+</div>
+
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+// ---- signature pad
+const pad = $('pad'), ctx = pad.getContext('2d');
+let drawing = false, signed = false, last = null;
+ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1b3a9e';
+const pos = (e) => { const r = pad.getBoundingClientRect(); return { x: (e.clientX - r.left) * pad.width / r.width, y: (e.clientY - r.top) * pad.height / r.height }; };
+pad.addEventListener('pointerdown', (e) => { drawing = true; last = pos(e); pad.setPointerCapture(e.pointerId); e.preventDefault(); });
+pad.addEventListener('pointermove', (e) => {
+  if (!drawing) return;
+  const p = pos(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p; signed = true; $('padhint').textContent = '';
+});
+['pointerup', 'pointercancel'].forEach((ev) => pad.addEventListener(ev, () => { drawing = false; }));
+$('clear').onclick = () => { ctx.clearRect(0, 0, pad.width, pad.height); signed = false; $('padhint').textContent = 'Sign inside the box'; };
+
+// ---- ID photo: shrink in the browser before upload
+function shrink(file) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, 1400 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = img.width * s; c.height = img.height * s;
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      resolve(c.toDataURL('image/jpeg', 0.8));
+    };
+    img.onerror = () => resolve(null);
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ---- submit
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = (m) => { $('err').textContent = m; };
+  err('');
+  const v = (id) => $(id).value.trim();
+  if (!v('full_name') || !v('email') || !v('phone') || !v('address') || !v('id_number') || !v('initials')) return err('Please fill in every required field.');
+  if (!/^\S+@\S+\.\S+$/.test(v('email'))) return err('Please enter a valid email.');
+  if (v('phone').replace(/\D/g, '').length < 7) return err('Please enter a valid mobile number.');
+  if (!signed) return err('Please draw your signature in the box.');
+  if (!$('c_read').checked || !$('c_understood').checked || !$('c_accurate').checked) return err('Please tick all three confirmations.');
+
+  $('go').disabled = true; $('go').textContent = 'Saving...';
+  try {
+    const file = $('id_photo').files[0];
+    const body = {
+      full_name: v('full_name'), business_name: v('business_name'), email: v('email'), phone: v('phone'), address: v('address'),
+      id_type: $('id_type').value, id_number: v('id_number'), initials: v('initials'),
+      signature: pad.toDataURL('image/png'), id_photo: file ? await shrink(file) : null,
+      consents: { read: true, understood: true, accurate: true },
+    };
+    const r = await fetch('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'Something went wrong.');
+    show(body, d);
+  } catch (x) {
+    err(x.message); $('go').disabled = false; $('go').textContent = 'Sign and register';
+  }
+});
+
+function show(b, d) {
+  $('d_code').textContent = d.code;
+  const rows = [['Name', b.full_name], ['Business', b.business_name || '-'], ['Email', b.email], ['Mobile', b.phone], ['Address', b.address], [b.id_type, b.id_number], ['Initials', b.initials],
+    ['Signed on', new Date(d.signed_at).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' }) + ' (Dhaka time)']];
+  $('d_list').innerHTML = rows.map(([k, x]) => `<dt>${esc(k)}</dt><dd>${esc(x)}</dd>`).join('');
+  $('d_sig').src = b.signature;
+  $('d_meta').textContent = `Agreement: Axion DMS Software Sale and Setup Agreement, version ${d.agreement_version}. Document fingerprint (SHA-256): ${d.agreement_sha256}`;
+  $('form-view').classList.add('hide'); $('done-view').classList.remove('hide'); scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
