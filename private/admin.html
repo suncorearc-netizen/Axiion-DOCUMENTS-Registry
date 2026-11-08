@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Axion HQ</title>
 <style>
-:root{--bg:#eef1f3;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#0e6b63;--acc2:#0a4f49;--err:#b3261e;--warn:#9a5b00;--wbg:#fff1d6;--ok:#e7f4f1;--shadow:0 1px 2px rgba(20,33,43,.05),0 6px 20px rgba(20,33,43,.06)}
-@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#182229;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#3cb3a6;--acc2:#2c9488;--err:#ff8a80;--warn:#ffc266;--wbg:#3a2f14;--ok:#14302d;--shadow:0 1px 2px rgba(0,0,0,.3)}}
+:root{--bg:#f3f5fb;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#4f46e5;--acc2:#4338ca;--err:#b3261e;--warn:#9a5b00;--wbg:#fff1d6;--ok:#eef0ff;--shadow:0 1px 2px rgba(20,33,43,.05),0 6px 20px rgba(20,33,43,.06)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0f1f;--card:#161a30;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#8b87ff;--acc2:#7570f5;--err:#ff8a80;--warn:#ffc266;--wbg:#3a2f14;--ok:#202552;--shadow:0 1px 2px rgba(0,0,0,.3)}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 18px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}
@@ -249,7 +249,7 @@ async function openClient(code) {
     <div class="card"><img class="sig" src="${esc(c.signature_data)}" alt="Signature"><dl>
       ${row('Initials', c.initials)}${row('Signed at', when(c.signed_at) + ' (Dhaka time)')}${row('Agreement version', c.agreement_version)}
       ${row('Document SHA-256', c.agreement_sha256)}${row('IP address', c.ip)}${row('Device', c.user_agent)}
-      ${row('Confirmed', 'Opened the agreement PDF: ' + (c.consents?.opened_pdf ? 'yes' : 'not recorded') + ' | Read and agreed to purchase: ' + (c.consents?.agree_purchase || c.consents?.read ? 'yes' : 'no') + ' | Understood key points: ' + (c.consents?.understood ? 'yes' : 'no') + ' | Details true and e-signature accepted: ' + (c.consents?.accurate ? 'yes' : 'no'))}
+      ${row('Confirmed', 'Read and agreed to purchase: ' + (c.consents?.agree_purchase || c.consents?.read ? 'yes' : 'no') + ' | Understood key points: ' + (c.consents?.understood ? 'yes' : 'no') + ' | Details true and e-signature accepted: ' + (c.consents?.accurate ? 'yes' : 'no'))}
     </dl>${c.photo_url ? `<p class="noprint" style="margin:8px 0 4px;color:var(--mute)">ID photo (link expires in 5 minutes)</p><a class="noprint" href="${esc(c.photo_url)}" target="_blank" rel="noopener"><img class="idimg" src="${esc(c.photo_url)}" alt="ID photo"></a>` : ''}</div>
     <div class="noprint">
     <h3>Handover and internal notes</h3>

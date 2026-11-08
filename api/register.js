@@ -56,8 +56,6 @@ export default async function handler(req, res) {
   // ---- The purchase agreement is mandatory. Nothing is saved unless every box is exactly `true`.
   if (c.agree_purchase !== true)
     return res.status(400).json({ error: 'You must agree to the purchase agreement before continuing.' });
-  if (c.opened_pdf !== true)
-    return res.status(400).json({ error: 'Please open and read the full agreement (PDF) first.' });
   if (c.read !== true || c.understood !== true || c.accurate !== true)
     return res.status(400).json({ error: 'Please tick all the confirmations.' });
   if (clean(b.accepted_version, 20) !== VERSION())
@@ -92,7 +90,6 @@ export default async function handler(req, res) {
       signature_data: b.signature,
       consents: {
         agree_purchase: true,
-        opened_pdf: true,
         read: true,
         understood: true,
         accurate: true,

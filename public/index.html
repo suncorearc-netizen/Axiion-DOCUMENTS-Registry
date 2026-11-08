@@ -3,99 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0e6b63">
+<meta name="theme-color" content="#4f46e5">
 <title>Axion DMS – Agreement &amp; Registration</title>
 <style>
-:root{--bg:#eef1f3;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#0e6b63;--acc2:#0a4f49;--err:#b3261e;--ok:#e7f4f1;--shadow:0 1px 2px rgba(20,33,43,.05),0 6px 20px rgba(20,33,43,.06)}
-@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#182229;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#3cb3a6;--acc2:#2c9488;--err:#ff8a80;--ok:#14302d;--shadow:0 1px 2px rgba(0,0,0,.3)}}
+:root{--bg:#f3f5fb;--card:#fff;--ink:#141a33;--mute:#5d6685;--line:#dde1f0;--acc:#4f46e5;--acc2:#4338ca;--teal:#06b6d4;--err:#d92d4b;--ok:#eef0ff;--good:#12b76a;--shadow:0 1px 2px rgba(30,40,90,.06),0 10px 30px rgba(30,40,90,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0f1f;--card:#161a30;--ink:#e9ecfb;--mute:#a1a9cc;--line:#2a3050;--acc:#8b87ff;--acc2:#7570f5;--teal:#22d3ee;--err:#ff7a90;--ok:#202552;--good:#3ddc97;--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35)}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
-.wrap{max-width:720px;margin:0 auto;padding:18px 16px 70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom,0)}
+.hero{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#06b6d4 130%);color:#fff;padding:calc(20px + env(safe-area-inset-top,0)) 16px 86px}
+@media (prefers-color-scheme:dark){.hero{background:linear-gradient(135deg,#312e81 0%,#5b21b6 55%,#0e7490 130%)}}
+.hin{max-width:720px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font:700 1.05rem Georgia,serif;margin-bottom:16px}
+.logo{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.2);display:grid;place-items:center;backdrop-filter:blur(4px)}
 h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.2;margin:0}
-h1{font-size:1.9rem}h2{font-size:1.2rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.brand{display:flex;align-items:center;gap:10px;font:700 1.05rem Georgia,serif;margin-bottom:18px}
-.logo{width:34px;height:34px;border-radius:9px;background:var(--acc);display:grid;place-items:center;color:#fff}
-.lead{color:var(--mute);margin:8px 0 18px}
+h1{font-size:1.8rem}
+.lead{opacity:.9;margin:6px 0 0}
+.wrap{max-width:720px;margin:-62px auto 0;padding:0 16px 70px}
 
 /* progress */
-.steps{display:flex;gap:8px;margin:0 0 18px;padding:0;list-style:none;position:sticky;top:0;z-index:4;background:var(--bg);padding:8px 0}
-.steps li{flex:1;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;color:var(--mute)}
-.steps i{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:.78rem;transition:.25s}
-.steps li.on{color:var(--ink)}.steps li.on i{border-color:var(--acc);color:var(--acc)}
-.steps li.done i{background:var(--acc);border-color:var(--acc);color:#fff}
-.steps li.done i::before{content:"\2713"}.steps li.done i span{display:none}
-@media(max-width:480px){.steps li b{display:none}}
+.steps{display:flex;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.steps li{flex:1;height:6px;border-radius:99px;background:var(--line);overflow:hidden;position:relative}
+.steps li::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--acc),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.steps li.done::after,.steps li.on::after{transform:scaleX(1)}
+.steps li.on::after{opacity:.55}
+.stepname{color:var(--mute);font-size:.85rem;font-weight:600;margin:0 0 10px;display:flex;justify-content:space-between}
 
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
-.num{width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;display:inline-grid;place-items:center;font:700 .85rem system-ui}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);animation:in .3s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:1.25rem;margin-bottom:14px}
 .points{list-style:none;margin:0;padding:0}
-.points li{padding:10px 12px 10px 14px;border-left:3px solid var(--acc);margin-bottom:8px;border-radius:0 8px 8px 0;background:var(--ok)}
+.points li{padding:11px 13px 11px 15px;border-left:4px solid var(--acc);margin-bottom:9px;border-radius:0 10px 10px 0;background:var(--ok)}
+.points li:nth-child(even){border-left-color:var(--teal)}
 .points b{display:block}
-.pdf{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:13px;border:1.5px solid var(--acc);border-radius:10px;color:var(--acc);font-weight:700;text-decoration:none}
-.pdf:hover{background:var(--ok)}
-.pdf.seen{border-style:solid;background:var(--ok)}
+.pdf{display:inline-block;margin-top:6px;color:var(--acc);font-weight:600;font-size:.92rem}
 label{display:block;font-weight:600;font-size:.92rem;margin:14px 0 4px}
 label small{font-weight:400;color:var(--mute)}
-input,select,textarea{width:100%;font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 12px;transition:border-color .15s}
-input:focus,select:focus,textarea:focus,button:focus-visible,canvas:focus-visible,a:focus-visible{outline:3px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:1px}
-input.bad,textarea.bad{border-color:var(--err)}
+input,select,textarea{width:100%;font:inherit;color:inherit;background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 20%,transparent)}
+button:focus-visible,canvas:focus-visible,a:focus-visible{outline:3px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:2px}
+.bad{border-color:var(--err)!important}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 @media(max-width:560px){.row{grid-template-columns:1fr}}
 
-/* the agreement gate */
-.agree{display:flex;gap:12px;align-items:flex-start;margin:16px 0 0;padding:14px;border:2px solid var(--line);border-radius:12px;font-weight:600;cursor:pointer;transition:.2s}
-.agree input{width:24px;height:24px;margin-top:2px;flex:none}
-.agree.ready{border-color:var(--acc);background:var(--ok)}
-.agree.locked{opacity:.55;cursor:not-allowed}
+.agree{display:flex;gap:12px;align-items:flex-start;margin:18px 0 0;padding:15px;border:2px solid var(--line);border-radius:14px;font-weight:600;cursor:pointer;transition:.2s}
+.agree input{width:24px;height:24px;margin-top:1px;flex:none;accent-color:var(--acc)}
 .agree.ok{border-color:var(--acc);background:var(--ok)}
-.gatehint{font-size:.88rem;color:var(--mute);margin:8px 2px 0}
-fieldset{border:0;margin:0;padding:0;min-width:0;transition:opacity .3s}
-fieldset:disabled{opacity:.4;pointer-events:none;user-select:none}
-.lock{display:none;text-align:center;color:var(--mute);font-weight:600;padding:4px 0 14px}
-.locked-on .lock{display:block}
+.agree.bad{border-color:var(--err);background:color-mix(in srgb,var(--err) 8%,transparent);animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin:12px 0;padding:10px;border-radius:10px;border:1.5px solid transparent}
+.chk input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--acc)}
+.chk.bad{border-color:var(--err)}
 
-#pad{width:100%;height:170px;background:#fff;border:1.5px dashed var(--mute);border-radius:10px;touch-action:none;display:block;cursor:crosshair}
+#pad{width:100%;height:180px;background:#fff;border:2px dashed var(--mute);border-radius:12px;touch-action:none;display:block;cursor:crosshair}
+#pad.bad{border-color:var(--err)}
 .padbar{display:flex;justify-content:space-between;color:var(--mute);font-size:.85rem;margin-top:4px}
 .link{background:none;border:0;color:var(--acc);font:inherit;font-weight:600;cursor:pointer;padding:0}
-.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin:12px 0}
-.chk input{width:20px;height:20px;margin-top:3px;flex:none}
-.btn{width:100%;background:var(--acc);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;padding:15px;cursor:pointer;margin-top:12px;transition:background .15s,transform .1s}
-.btn:hover:not(:disabled){background:var(--acc2)}.btn:active:not(:disabled){transform:scale(.99)}
-.btn:disabled{opacity:.5;cursor:not-allowed}.btn.busy{cursor:wait}
-.btn.alt{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
-#need{font-size:.88rem;color:var(--mute);margin:8px 2px 0;min-height:1.2em}
-#err{color:var(--err);font-weight:600;margin-top:10px;min-height:1.2em}
+.nav{display:flex;gap:10px;margin-top:20px}
+.btn{flex:1;background:linear-gradient(135deg,var(--acc),#7c3aed);color:#fff;border:0;border-radius:12px;font:inherit;font-weight:700;padding:15px;cursor:pointer;transition:filter .15s,transform .1s;box-shadow:0 6px 16px color-mix(in srgb,var(--acc) 35%,transparent)}
+.btn:hover:not(:disabled){filter:brightness(1.08)}.btn:active:not(:disabled){transform:scale(.985)}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn.alt{flex:0 0 auto;background:transparent;color:var(--acc);border:1.5px solid var(--line);box-shadow:none;padding:15px 20px}
+.msg{color:var(--err);font-weight:600;margin-top:12px;min-height:1.3em}
 .priv{font-size:.85rem;color:var(--mute);margin-top:14px}
-.thumb{display:none;margin-top:8px;max-height:110px;border-radius:8px;border:1px solid var(--line)}
-.ver{font-size:.8rem;color:var(--mute);margin-top:10px}
-.code{font:700 2.2rem/1.1 Georgia,serif;letter-spacing:.04em;color:var(--acc);margin:6px 0 2px}
-.tick{width:56px;height:56px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-size:1.8rem;margin-bottom:10px;animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+.thumb{display:none;margin-top:8px;max-height:110px;border-radius:10px;border:1px solid var(--line)}
+.ver{font-size:.8rem;color:var(--mute);margin-top:8px}
+.code{font:700 2.2rem/1.1 Georgia,serif;letter-spacing:.04em;background:linear-gradient(90deg,var(--acc),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;margin:6px 0 2px}
+.tick{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--good),var(--teal));color:#fff;display:grid;place-items:center;font-size:1.8rem;margin-bottom:10px;animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
 @keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
 .copy dl{display:grid;grid-template-columns:140px 1fr;gap:6px 12px;margin:14px 0}
 .copy dt{color:var(--mute)}.copy dd{margin:0;word-break:break-word}
-.copy img{background:#fff;border:1px solid var(--line);border-radius:6px;max-width:260px;height:auto}
+.copy img{background:#fff;border:1px solid var(--line);border-radius:8px;max-width:260px;height:auto}
 .hide{display:none!important}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-@media print{body{background:#fff;color:#000}.noprint{display:none!important}.card{border:0;padding:0;box-shadow:none}.copy dt{color:#444}}
+.alink{display:block;text-align:center;text-decoration:none;margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{background:#fff;color:#000}.hero,.noprint{display:none!important}.wrap{margin:0}.card{border:0;padding:0;box-shadow:none}.copy dt{color:#444}.code{color:#000;background:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-<div id="form-view">
+<div class="hero"><div class="hin">
   <div class="brand"><span class="logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 20h18L12 3Z"/><path d="M8.5 14h7"/></svg></span>Axion DMS</div>
   <h1>Purchase agreement</h1>
-  <p class="lead">Takes about 3 minutes: read and accept the agreement, enter your details, sign. You will get a Client ID for your records.</p>
+  <p class="lead">3 quick steps. You will get a Client ID at the end.</p>
+</div></div>
 
-  <ol class="steps" aria-label="Progress">
-    <li id="st1" class="on"><i><span>1</span></i><b>Agreement</b></li>
-    <li id="st2"><i><span>2</span></i><b>Your details</b></li>
-    <li id="st3"><i><span>3</span></i><b>Sign</b></li>
-  </ol>
+<div class="wrap">
+<div id="form-view">
+  <ol class="steps" aria-hidden="true"><li id="b1" class="on"></li><li id="b2"></li><li id="b3"></li></ol>
+  <p class="stepname"><span id="sname">Step 1 of 3 - Agreement</span></p>
 
-  <section class="card" id="s1">
-    <h2><span class="num">1</span>Read and accept the agreement</h2>
+  <!-- STEP 1 -->
+  <section class="card step" id="s1">
+    <h2>Please read and accept</h2>
     <ul class="points">
       <li><b>You are buying code and a one-time setup.</b>This is not hosting and not a subscription. No monthly fee from us.</li>
       <li><b>The accounts are yours.</b>Your app runs on your own GitHub, Vercel and Supabase accounts, registered with your email. After handover we keep no passwords and no access.</li>
@@ -105,63 +103,57 @@ fieldset:disabled{opacity:.4;pointer-events:none;user-select:none}
       <li><b>Our total liability is limited to the price you paid.</b></li>
       <li><b>For your business only.</b>You may modify the code for your own business, but you may not resell, share or publish it.</li>
     </ul>
-    <a class="pdf" id="pdflink" href="/agreement.pdf" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
-      <span id="pdftxt">Open the full agreement (PDF) to read it</span></a>
-
-    <label class="agree locked" id="agreebox">
-      <input type="checkbox" id="c_agree" disabled>
-      <span>I have read the full agreement and I <u>agree to purchase</u> the Axion DMS code and one-time setup under its terms.</span>
+    <a class="pdf" href="/agreement.pdf" target="_blank" rel="noopener">Want the full wording? Open the agreement (PDF)</a>
+    <label class="agree" id="agreebox">
+      <input type="checkbox" id="c_agree">
+      <span>I have read the points above and I <u>agree to purchase</u> the Axion DMS code and one-time setup under this agreement.</span>
     </label>
-    <p class="gatehint" id="gatehint">Open the PDF above first. The box unlocks after you do.</p>
+    <div class="msg" id="m1" role="alert"></div>
+    <div class="nav"><button type="button" class="btn" id="n1">OK, next</button></div>
   </section>
 
-  <div id="gatewrap" class="locked-on">
-  <fieldset id="gate" disabled>
-    <section class="card" id="s2">
-      <h2><span class="num">2</span>Your details</h2>
-      <div class="lock">Accept the agreement above to continue.</div>
-      <form id="f" novalidate autocomplete="on" onsubmit="return false">
-        <label for="full_name">Full name</label>
-        <input id="full_name" name="full_name" autocomplete="name" required>
-        <label for="business_name">Business / dealership name <small>(if any)</small></label>
-        <input id="business_name" name="business_name" autocomplete="organization">
-        <div class="row">
-          <div><label for="email">Email</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" required></div>
-          <div><label for="phone">Mobile number</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
-        </div>
-        <label for="address">Address</label>
-        <textarea id="address" name="address" rows="2" autocomplete="street-address" required></textarea>
-        <div class="row">
-          <div><label for="id_type">ID type</label>
-            <select id="id_type" name="id_type" required><option>National ID (NID)</option><option>Passport</option><option>Driving licence</option><option>Trade licence</option></select></div>
-          <div><label for="id_number">ID number</label><input id="id_number" name="id_number" autocomplete="off" required></div>
-        </div>
-        <label for="id_photo">Photo of your ID <small>(optional, but helps us verify you)</small></label>
-        <input id="id_photo" type="file" accept="image/*">
-        <img class="thumb" id="thumb" alt="Preview of your ID photo">
-      </form>
-    </section>
+  <!-- STEP 2 -->
+  <section class="card step hide" id="s2">
+    <h2>Your details</h2>
+    <label for="full_name" style="margin-top:0">Full name</label>
+    <input id="full_name" autocomplete="name">
+    <label for="business_name">Business / dealership name <small>(if any)</small></label>
+    <input id="business_name" autocomplete="organization">
+    <div class="row">
+      <div><label for="email">Email</label><input id="email" type="email" inputmode="email" autocomplete="email"></div>
+      <div><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+    </div>
+    <label for="address">Address</label>
+    <textarea id="address" rows="2" autocomplete="street-address"></textarea>
+    <div class="row">
+      <div><label for="id_type">ID type</label>
+        <select id="id_type"><option>National ID (NID)</option><option>Passport</option><option>Driving licence</option><option>Trade licence</option></select></div>
+      <div><label for="id_number">ID number</label><input id="id_number" autocomplete="off"></div>
+    </div>
+    <label for="id_photo">Photo of your ID <small>(optional, but helps us verify you)</small></label>
+    <input id="id_photo" type="file" accept="image/*">
+    <img class="thumb" id="thumb" alt="Preview of your ID photo">
+    <div class="msg" id="m2" role="alert"></div>
+    <div class="nav"><button type="button" class="btn alt" id="b_2">Back</button><button type="button" class="btn" id="n2">OK, next</button></div>
+  </section>
 
-    <section class="card" id="s3">
-      <h2><span class="num">3</span>Sign</h2>
-      <label for="initials" style="margin-top:0">Your initials</label>
-      <input id="initials" maxlength="6" style="max-width:140px" autocomplete="off" required>
-      <label for="pad">Draw your signature with finger or mouse</label>
-      <canvas id="pad" width="640" height="220" tabindex="0" aria-label="Signature box"></canvas>
-      <div class="padbar"><span id="padhint">Sign inside the box</span><button type="button" class="link" id="clear">Clear</button></div>
+  <!-- STEP 3 -->
+  <section class="card step hide" id="s3">
+    <h2>Sign</h2>
+    <label for="initials" style="margin-top:0">Your initials</label>
+    <input id="initials" maxlength="6" style="max-width:140px" autocomplete="off">
+    <label for="pad">Draw your signature with finger or mouse</label>
+    <canvas id="pad" width="640" height="220" tabindex="0" aria-label="Signature box"></canvas>
+    <div class="padbar"><span id="padhint">Sign inside the box</span><button type="button" class="link" id="clear">Clear</button></div>
 
-      <label class="chk"><input type="checkbox" id="c_understood"><span>I understand I am buying code and a one-time setup, that the accounts and data are mine, that GitHub, Vercel and Supabase are outside the Seller's control, and that the Seller's liability is limited as the agreement says.</span></label>
-      <label class="chk"><input type="checkbox" id="c_accurate"><span>The details I entered are true, and I agree this electronic signature is my signature on the agreement.</span></label>
+    <label class="chk" id="k_u"><input type="checkbox" id="c_understood"><span>I understand I am buying code and a one-time setup, that the accounts and data are mine, that GitHub, Vercel and Supabase are outside the Seller's control, and that the Seller's liability is limited as the agreement says.</span></label>
+    <label class="chk" id="k_a"><input type="checkbox" id="c_accurate"><span>The details I entered are true, and I agree this electronic signature is my signature on the agreement.</span></label>
 
-      <button class="btn" id="go" type="button" disabled>Sign and register</button>
-      <div id="need" aria-live="polite"></div>
-      <div id="err" role="alert"></div>
-      <p class="priv">We keep these details, your signature, the time and your device information only as the record of this agreement.</p>
-      <p class="ver" id="ver"></p>
-    </section>
-  </fieldset>
-  </div>
+    <div class="msg" id="m3" role="alert"></div>
+    <div class="nav"><button type="button" class="btn alt" id="b_3">Back</button><button type="button" class="btn" id="go">Sign and register</button></div>
+    <p class="priv">We keep these details, your signature, the time and your device information only as the record of this agreement.</p>
+    <p class="ver" id="ver"></p>
+  </section>
 </div>
 
 <div id="done-view" class="hide">
@@ -174,45 +166,69 @@ fieldset:disabled{opacity:.4;pointer-events:none;user-select:none}
     <p style="margin:0 0 6px;color:var(--mute)">Signature</p>
     <img id="d_sig" alt="Your signature">
     <p class="priv" id="d_meta"></p>
-    <button class="btn noprint" onclick="window.print()">Print or save my signed copy</button>
-    <a class="btn alt noprint" style="display:block;text-align:center;text-decoration:none" href="/agreement.pdf" target="_blank" rel="noopener">Open the agreement (PDF)</a>
+    <div class="nav noprint"><button class="btn" onclick="window.print()">Print or save my signed copy</button></div>
+    <a class="btn alt alink noprint" href="/agreement.pdf" target="_blank" rel="noopener">Open the agreement (PDF)</a>
   </section>
 </div>
-
 </div>
 
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const v = (id) => $(id).value.trim();
+let step = 1, signed = false, photo = null, version = null, busy = false;
 
-let openedPdf = false, signed = false, photo = null, version = null, busy = false;
-
-// ---- agreement version: ask the server which one is current (also warms the server up)
+// ask the server which agreement version is current (also wakes the server up)
 const verReady = fetch('/api/register').then((r) => r.json()).then((d) => {
   version = d.version; $('ver').textContent = `Agreement version ${d.version}`; return d;
 }).catch(() => null);
 
-// ---- step 1: they must open the PDF before the agree box unlocks
-$('pdflink').addEventListener('click', () => {
-  openedPdf = true;
-  $('pdflink').classList.add('seen');
-  $('pdftxt').textContent = 'Agreement opened - open again';
-  $('c_agree').disabled = false;
-  $('agreebox').classList.remove('locked'); $('agreebox').classList.add('ready');
-  $('gatehint').textContent = 'Now tick the box to accept and continue.';
-  refresh();
-});
+// ---- wizard: one step at a time
+const NAMES = ['Agreement', 'Your details', 'Sign'];
+function go(n) {
+  step = n;
+  [1, 2, 3].forEach((i) => {
+    $('s' + i).classList.toggle('hide', i !== n);
+    $('b' + i).className = i < n ? 'done' : i === n ? 'on' : '';
+  });
+  $('sname').textContent = `Step ${n} of 3 - ${NAMES[n - 1]}`;
+  scrollTo({ top: 0, behavior: 'smooth' });
+}
+const flag = (el, bad) => el.classList.toggle('bad', !!bad);
 
-// ---- the gate: the rest of the form stays locked until they accept
-$('c_agree').addEventListener('change', () => {
-  const on = $('c_agree').checked && openedPdf;
-  $('gate').disabled = !on;
-  $('gatewrap').classList.toggle('locked-on', !on);
-  $('agreebox').classList.toggle('ok', on);
-  $('gatehint').textContent = on ? 'Accepted. Continue below.' : 'Now tick the box to accept and continue.';
-  if (on) setTimeout(() => $('s2').scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
-  refresh();
-});
+// Step 1: they must tick OK. If not, say so.
+$('n1').onclick = () => {
+  if (!$('c_agree').checked) {
+    $('m1').textContent = 'Please read the points above and tick the box "I agree to purchase" to continue.';
+    flag($('agreebox'), true); void $('agreebox').offsetWidth; return;
+  }
+  $('m1').textContent = ''; go(2);
+};
+$('c_agree').onchange = () => {
+  $('agreebox').classList.toggle('ok', $('c_agree').checked);
+  if ($('c_agree').checked) { flag($('agreebox'), false); $('m1').textContent = ''; }
+};
+
+// Step 2: check the details one by one
+function checkDetails() {
+  const bad = [];
+  const need = (id, ok, label) => { flag($(id), !ok); if (!ok) bad.push([id, label]); };
+  need('full_name', !!v('full_name'), 'your full name');
+  need('email', /^\S+@\S+\.\S+$/.test(v('email')), 'a valid email');
+  need('phone', v('phone').replace(/\D/g, '').length >= 7, 'your mobile number');
+  need('address', !!v('address'), 'your address');
+  need('id_number', !!v('id_number'), 'your ID number');
+  return bad;
+}
+$('n2').onclick = () => {
+  const bad = checkDetails();
+  if (bad.length) { $('m2').textContent = 'Please fill in: ' + bad.map((b) => b[1]).join(', ') + '.'; $(bad[0][0]).focus(); return; }
+  $('m2').textContent = ''; go(3);
+};
+$('b_2').onclick = () => go(1);
+$('b_3').onclick = () => go(2);
+['full_name', 'business_name', 'email', 'phone', 'id_number'].forEach((id) => $(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); $('n2').click(); } }));
+document.querySelectorAll('input,textarea').forEach((el) => el.addEventListener('input', () => el.classList.remove('bad')));
 
 // ---- signature pad
 const pad = $('pad'), ctx = pad.getContext('2d');
@@ -223,12 +239,14 @@ pad.addEventListener('pointerdown', (e) => { drawing = true; last = pos(e); pad.
 pad.addEventListener('pointermove', (e) => {
   if (!drawing) return;
   const p = pos(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
-  if (!signed) { signed = true; $('padhint').textContent = ''; refresh(); }
+  if (!signed) { signed = true; $('padhint').textContent = ''; flag(pad, false); }
 });
 ['pointerup', 'pointercancel'].forEach((ev) => pad.addEventListener(ev, () => { drawing = false; }));
-$('clear').onclick = () => { ctx.clearRect(0, 0, pad.width, pad.height); signed = false; $('padhint').textContent = 'Sign inside the box'; refresh(); };
+$('clear').onclick = () => { ctx.clearRect(0, 0, pad.width, pad.height); signed = false; $('padhint').textContent = 'Sign inside the box'; };
+$('c_understood').onchange = () => flag($('k_u'), false);
+$('c_accurate').onchange = () => flag($('k_a'), false);
 
-// ---- ID photo: shrink as soon as it is chosen, so "Sign and register" is quick
+// ---- ID photo: shrink as soon as it is chosen, so the final step is quick
 $('id_photo').addEventListener('change', () => {
   const file = $('id_photo').files[0];
   photo = null; $('thumb').style.display = 'none';
@@ -245,43 +263,19 @@ $('id_photo').addEventListener('change', () => {
   img.src = url;
 });
 
-// ---- what is still missing? drives the progress steps and the button
-const v = (id) => $(id).value.trim();
-function problems() {
-  const p = [];
-  if (!openedPdf) p.push('open the agreement PDF');
-  if (!$('c_agree').checked) p.push('accept the agreement');
-  if (!v('full_name')) p.push('full name');
-  if (!/^\S+@\S+\.\S+$/.test(v('email'))) p.push('valid email');
-  if (v('phone').replace(/\D/g, '').length < 7) p.push('mobile number');
-  if (!v('address')) p.push('address');
-  if (!v('id_number')) p.push('ID number');
-  if (!v('initials')) p.push('initials');
-  if (!signed) p.push('signature');
-  if (!$('c_understood').checked) p.push('tick "I understand"');
-  if (!$('c_accurate').checked) p.push('tick "details are true"');
-  return p;
-}
-function refresh() {
-  const p = problems();
-  const accepted = $('c_agree').checked && openedPdf;
-  const detailsOk = accepted && !p.some((x) => ['full name', 'valid email', 'mobile number', 'address', 'ID number'].includes(x));
-  const signOk = detailsOk && !p.some((x) => ['initials', 'signature', 'tick "I understand"', 'tick "details are true"'].includes(x));
-  const mark = (id, done, on) => { $(id).classList.toggle('done', done); $(id).classList.toggle('on', on && !done); };
-  mark('st1', accepted, !accepted);
-  mark('st2', detailsOk, accepted && !detailsOk);
-  mark('st3', signOk, detailsOk && !signOk);
-  $('go').disabled = busy || p.length > 0;
-  $('need').textContent = p.length && accepted ? 'Still needed: ' + p.join(', ') : '';
-}
-document.addEventListener('input', refresh);
-document.addEventListener('change', refresh);
+// ---- Step 3: submit
+$('go').onclick = async () => {
+  if (busy) return;
+  const m = $('m3'); m.textContent = '';
+  const miss = [];
+  if (!v('initials')) { flag($('initials'), true); miss.push('your initials'); }
+  if (!signed) { flag(pad, true); miss.push('your signature'); }
+  if (!$('c_understood').checked) { flag($('k_u'), true); miss.push('the first tick box'); }
+  if (!$('c_accurate').checked) { flag($('k_a'), true); miss.push('the second tick box'); }
+  if (miss.length) { m.textContent = 'Please complete: ' + miss.join(', ') + '.'; return; }
+  if (!$('c_agree').checked || checkDetails().length) { go(!$('c_agree').checked ? 1 : 2); return; }
 
-// ---- submit
-$('go').addEventListener('click', async () => {
-  if (busy || problems().length) return;
-  const err = (m) => { $('err').textContent = m; };
-  err(''); busy = true; $('go').classList.add('busy'); $('go').textContent = 'Saving...'; refresh();
+  busy = true; $('go').disabled = true; $('go').textContent = 'Saving...';
   try {
     if (!version) await verReady;
     if (!version) throw new Error('Could not reach the server. Please check your internet and try again.');
@@ -290,18 +284,18 @@ $('go').addEventListener('click', async () => {
       id_type: $('id_type').value, id_number: v('id_number'), initials: v('initials'),
       signature: pad.toDataURL('image/png'), id_photo: photo,
       accepted_version: version,
-      consents: { agree_purchase: true, opened_pdf: true, read: true, understood: true, accurate: true },
+      consents: { agree_purchase: true, read: true, understood: true, accurate: true },
     };
     const r = await fetch('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(d.error || 'Something went wrong.');
     show(body, d);
   } catch (x) {
-    err(x.message);
+    m.textContent = x.message;
   } finally {
-    busy = false; $('go').classList.remove('busy'); $('go').textContent = 'Sign and register'; refresh();
+    busy = false; $('go').disabled = false; $('go').textContent = 'Sign and register';
   }
-});
+};
 
 function show(b, d) {
   $('d_code').textContent = d.code;
@@ -313,7 +307,6 @@ function show(b, d) {
   $('d_meta').textContent = `Agreement: Axion DMS Software Sale and Setup Agreement, version ${d.agreement_version}. Document fingerprint (SHA-256): ${d.agreement_sha256}`;
   $('form-view').classList.add('hide'); $('done-view').classList.remove('hide'); scrollTo(0, 0);
 }
-refresh();
 </script>
 </body>
 </html>

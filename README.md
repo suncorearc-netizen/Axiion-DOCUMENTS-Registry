@@ -52,7 +52,7 @@ Run the **last block** of `supabase/schema.sql` (under "SPEED UPGRADE") once in 
 - Never store clients' GitHub/Vercel/Supabase passwords here; the agreement says you keep no access after handover.
 
 ## What changed in v2
-- **Mandatory purchase agreement.** The form is locked until the client opens the agreement PDF and ticks "I agree to purchase". The server refuses to save anything otherwise, and stores the version, time, and that the PDF was opened. The dashboard shows an **Accepted** badge per client (older records show "Earlier form").
+- **Mandatory purchase agreement.** The client goes through 3 steps (Agreement, Details, Sign) and cannot move on until they tick "I agree to purchase". The server refuses to save anything otherwise, and stores the version and time. The dashboard shows an **Accepted** badge per client (older records show "Earlier form").
 - **Faster.** Agreement fingerprint is computed once (no self-download per signup), dashboard stats and list load together, admin session checks are cached 30 seconds, search has database indexes, and ID photos are shrunk when chosen.
 - **Region.** `vercel.json` sets `"regions": ["sin1"]` (Singapore). Change it to the region closest to your Supabase project (Supabase > Project Settings > General).
 - **Dashboard.** Status filter pills, skeleton loading, call / WhatsApp / email buttons, copy Client ID, **Export CSV**, `/` to search, Esc to close.
