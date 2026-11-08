@@ -1,7 +1,8 @@
 import bcrypt from 'bcryptjs';
-import { db, makeSession, getSession, getIp } from './_lib.js';
+import { db, makeSession, getSession, getIp, forgetSessions } from './_lib.js';
 
 const PAGE = 25;
+let statsCache = null;
 const DEFAULT_PW = '1234';
 const EDITABLE = ['status', 'live_url', 'github_user', 'vercel_user', 'supabase_project', 'handover_date', 'notes'];
 const DUMMY = '$2a$10$CwTycUXWue0Thq9StjUM0uJ8m1v7oYH3m2l0i9gq0g3f1XJ4fG1eW';
@@ -96,26 +97,30 @@ export default async function handler(req, res) {
     const u = digits(body.username);
     if (u === me.username) return res.status(400).json({ error: 'You cannot disable your own login.' });
     await db.from('admin_users').update({ active: !!body.active }).eq('username', u);
+    forgetSessions();
     await log(me.username, body.active ? 'team_enable' : 'team_disable', null, u);
     return res.json({ ok: true });
   }
 
-  // ---- dashboard data
+  // ---- dashboard data (cached 20s per warm server; the four counts run in parallel)
   if (action === 'stats') {
+    if (statsCache && statsCache.exp > Date.now()) return res.json(statsCache.data);
     const c = (f) => f(db.from('clients').select('id', { count: 'exact', head: true })).then((r) => r.count || 0);
     const day = new Date(Date.now() - 864e5).toISOString();
     const week = new Date(Date.now() - 7 * 864e5).toISOString();
     const [total, today, week7, issues] = await Promise.all([
       c((q) => q), c((q) => q.gte('signed_at', day)), c((q) => q.gte('signed_at', week)), c((q) => q.eq('status', 'issue')),
     ]);
-    return res.json({ total, today, week: week7, issues });
+    const data = { total, today, week: week7, issues };
+    statsCache = { data, exp: Date.now() + 20e3 };
+    return res.json(data);
   }
 
   if (action === 'list') {
     const page = Math.max(0, parseInt(req.query.page || '0', 10) || 0);
     let qb = db
       .from('clients')
-      .select('code,full_name,business_name,phone,email,status,signed_at', { count: 'exact' })
+      .select('code,full_name,business_name,phone,email,status,signed_at,consents', { count: 'exact' })
       .order('signed_at', { ascending: false })
       .range(page * PAGE, page * PAGE + PAGE - 1);
     if (req.query.status) qb = qb.eq('status', req.query.status);
@@ -134,13 +139,11 @@ export default async function handler(req, res) {
   if (action === 'get') {
     const { data: c } = await db.from('clients').select('*').eq('code', req.query.code).maybeSingle();
     if (!c) return res.status(404).json({ error: 'Not found' });
-    let photo_url = null;
-    if (c.id_photo_path) {
-      const s = await db.storage.from('id-documents').createSignedUrl(c.id_photo_path, 300);
-      photo_url = s.data?.signedUrl || null;
-    }
-    await log(me.username, 'view', c.code, null);
-    return res.json({ ...c, photo_url });
+    const [signed] = await Promise.all([
+      c.id_photo_path ? db.storage.from('id-documents').createSignedUrl(c.id_photo_path, 300) : null,
+      log(me.username, 'view', c.code, null),
+    ]);
+    return res.json({ ...c, photo_url: signed?.data?.signedUrl || null });
   }
 
   if (action === 'update' && req.method === 'POST') {
@@ -152,8 +155,31 @@ export default async function handler(req, res) {
     patch.updated_by = me.username;
     const { error } = await db.from('clients').update(patch).eq('code', body.code);
     if (error) return res.status(500).json({ error: 'Could not save' });
+    statsCache = null;
     await log(me.username, 'update', body.code, Object.keys(patch).join(','));
     return res.json({ ok: true });
+  }
+
+  // ---- CSV export of the client list (no signatures or ID photos)
+  if (action === 'export') {
+    const { data, error } = await db
+      .from('clients')
+      .select('code,full_name,business_name,phone,email,address,id_type,id_number,status,signed_at,agreement_version,live_url,handover_date,notes')
+      .order('signed_at', { ascending: false })
+      .limit(5000);
+    if (error) return res.status(500).json({ error: 'Export failed' });
+    const cols = ['code', 'full_name', 'business_name', 'phone', 'email', 'address', 'id_type', 'id_number', 'status', 'signed_at', 'agreement_version', 'live_url', 'handover_date', 'notes'];
+    // A leading = + - @ can run as a formula in Excel, so neutralise it.
+    const cell = (v) => {
+      let t = String(v ?? '').replace(/\r?\n/g, ' ');
+      if (/^[=+\-@\t]/.test(t)) t = "'" + t;
+      return '"' + t.replace(/"/g, '""') + '"';
+    };
+    const csv = '\ufeff' + [cols.join(',')].concat(data.map((r) => cols.map((k) => cell(r[k])).join(','))).join('\r\n');
+    await log(me.username, 'export', null, String(data.length));
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', 'attachment; filename="axion-clients.csv"');
+    return res.send(csv);
   }
 
   res.status(400).json({ error: 'Unknown action' });

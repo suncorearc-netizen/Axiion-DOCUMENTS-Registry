@@ -64,3 +64,16 @@ alter table audit_log enable row level security;
 -- Private bucket for ID photos
 insert into storage.buckets (id, name, public) values ('id-documents', 'id-documents', false)
 on conflict (id) do nothing;
+
+-- ---------------------------------------------------------------
+-- SPEED UPGRADE (safe to run again any time): fast dashboard search
+-- ---------------------------------------------------------------
+create extension if not exists pg_trgm;
+create index if not exists clients_name_trgm   on clients using gin (full_name gin_trgm_ops);
+create index if not exists clients_biz_trgm    on clients using gin (business_name gin_trgm_ops);
+create index if not exists clients_email_trgm  on clients using gin (email gin_trgm_ops);
+create index if not exists clients_code_trgm   on clients using gin (code gin_trgm_ops);
+create index if not exists clients_idnum_trgm  on clients using gin (id_number gin_trgm_ops);
+create index if not exists clients_phoned_trgm on clients using gin (phone_digits gin_trgm_ops);
+create index if not exists clients_status_idx  on clients (status, signed_at desc);
+create index if not exists audit_admin_idx     on audit_log (action, admin, at desc);

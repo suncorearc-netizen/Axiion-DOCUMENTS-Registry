@@ -1,6 +1,10 @@
 {
+  "regions": ["sin1"],
   "rewrites": [{ "source": "/hq-6961c1e148", "destination": "/api/hq" }],
-  "functions": { "api/hq.js": { "includeFiles": "private/**" } },
+  "functions": {
+    "api/hq.js": { "includeFiles": "private/**" },
+    "api/register.js": { "includeFiles": "public/agreement.pdf" }
+  },
   "headers": [
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },

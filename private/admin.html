@@ -6,48 +6,70 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Axion HQ</title>
 <style>
-:root{--bg:#eef1f3;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#0e6b63;--err:#b3261e;--warn:#9a5b00;--wbg:#fff1d6;--ok:#e7f4f1}
-@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#182229;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#3cb3a6;--err:#ff8a80;--warn:#ffc266;--wbg:#3a2f14;--ok:#14302d}}
+:root{--bg:#eef1f3;--card:#fff;--ink:#14212b;--mute:#5a6b78;--line:#d5dce1;--acc:#0e6b63;--acc2:#0a4f49;--err:#b3261e;--warn:#9a5b00;--wbg:#fff1d6;--ok:#e7f4f1;--shadow:0 1px 2px rgba(20,33,43,.05),0 6px 20px rgba(20,33,43,.06)}
+@media (prefers-color-scheme:dark){:root{--bg:#10171c;--card:#182229;--ink:#e8eef2;--mute:#9db0bc;--line:#2c3a43;--acc:#3cb3a6;--acc2:#2c9488;--err:#ff8a80;--warn:#ffc266;--wbg:#3a2f14;--ok:#14302d;--shadow:0 1px 2px rgba(0,0,0,.3)}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--card);border-bottom:1px solid var(--line)}
-header b{font:700 1.15rem Georgia,serif}
-main{max-width:1050px;margin:0 auto;padding:18px 14px 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 18px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}
+.brand{display:flex;align-items:center;gap:10px;font:700 1.1rem Georgia,serif}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--acc);display:grid;place-items:center;color:#fff}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.av{width:30px;height:30px;border-radius:50%;background:var(--ok);color:var(--acc);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+main{max-width:1100px;margin:0 auto;padding:18px 14px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
 input,select,textarea,button{font:inherit;color:inherit}
-input,select,textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+input,select,textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
 :focus-visible{outline:3px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:1px}
-.btn{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:9px;padding:9px 16px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--acc2)}.btn:disabled{opacity:.6;cursor:wait}
 .btn.alt{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
-.link{background:none;border:0;color:var(--acc);font-weight:600;cursor:pointer}
+.btn.sm{padding:6px 12px;font-size:.88rem}
+.link{background:none;border:0;color:var(--acc);font-weight:600;cursor:pointer;padding:6px 8px;border-radius:6px}
+.link:hover{background:var(--ok)}
+a.link{text-decoration:none;display:inline-block}
 .login{max-width:360px;margin:12vh auto}
 .login h1{font:700 1.5rem Georgia,serif;margin:0 0 12px}
 label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}
 .err{color:var(--err);font-weight:600;min-height:1.2em;margin-top:10px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.stats div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.stats b{display:block;font:700 1.7rem Georgia,serif}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+.stats b{display:block;font:700 1.8rem Georgia,serif;min-height:2.2rem}
 .stats span{color:var(--mute);font-size:.85rem}
-.bar{display:grid;grid-template-columns:1fr 160px;gap:10px;margin-bottom:12px}
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.stats .iss b{color:var(--warn)}
+.bar{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:10px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:5px 14px;font-weight:600;font-size:.88rem;cursor:pointer;color:var(--mute)}
+.pill.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.tw{overflow-x:auto;border-radius:12px;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
 th{color:var(--mute);font-weight:600;font-size:.85rem}
-tbody tr{cursor:pointer}tbody tr:hover{background:var(--ok)}
+tbody tr{cursor:pointer;transition:background .1s}tbody tr:hover{background:var(--ok)}
+tbody tr:last-child td{border-bottom:0}
 .tag{display:inline-block;border-radius:99px;padding:1px 10px;font-size:.8rem;font-weight:700;background:var(--ok);color:var(--acc)}
 .tag.issue{background:var(--wbg);color:var(--warn)}.tag.closed{background:var(--line);color:var(--mute)}
+.tag.old{background:var(--line);color:var(--mute)}
+.sk{display:inline-block;height:.9em;border-radius:5px;background:linear-gradient(90deg,var(--line),var(--ok),var(--line));background-size:200% 100%;animation:sh 1.1s linear infinite;vertical-align:middle}
+@keyframes sh{to{background-position:-200% 0}}
 .pg{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--mute)}
 #drawer{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;justify-content:flex-end;z-index:5}
 #drawer.on{display:flex}
-#panel{background:var(--bg);width:min(620px,100%);height:100%;overflow-y:auto;padding:16px}
+#panel{background:var(--bg);width:min(620px,100%);height:100%;overflow-y:auto;padding:16px;animation:slide .2s ease-out}
+@keyframes slide{from{transform:translateX(30px);opacity:0}to{transform:none;opacity:1}}
 dl{display:grid;grid-template-columns:130px 1fr;gap:5px 12px;margin:10px 0}
 dt{color:var(--mute)}dd{margin:0;word-break:break-word}
 h3{font:700 1.05rem Georgia,serif;margin:18px 0 6px}
 .sig{background:#fff;border:1px solid var(--line);border-radius:6px;max-width:260px;display:block}
 .idimg{max-width:100%;border-radius:6px;border:1px solid var(--line)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.agreed{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--ok);color:var(--acc);font-weight:700;margin-top:10px}
+.agreed.no{background:var(--wbg);color:var(--warn)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:9}
+#toast.on{opacity:1;transform:translate(-50%,0)}
 .hide{display:none}
-@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.bar{grid-template-columns:1fr}.two{grid-template-columns:1fr}dl{grid-template-columns:105px 1fr}}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.bar{grid-template-columns:1fr}.two{grid-template-columns:1fr}dl{grid-template-columns:105px 1fr}.hm{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{body *{visibility:hidden}#panel,#panel *{visibility:visible}#drawer{position:static;background:none;display:block}#panel{position:absolute;left:0;top:0;width:100%;background:#fff;color:#000}.noprint{display:none!important}}
 </style>
 </head>
@@ -72,21 +94,26 @@ h3{font:700 1.05rem Georgia,serif;margin:18px 0 6px}
 </div>
 
 <div id="app-view" class="hide">
-  <header><b>Axion HQ</b><span><span id="who" style="margin-right:12px;color:var(--mute)"></span><button class="link" id="team">Team</button> <button class="link" id="pw">Password</button> <button class="link" id="logout">Log out</button></span></header>
+  <header>
+    <div class="brand"><span class="logo" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 20h18L12 3Z"/><path d="M8.5 14h7"/></svg></span>Axion HQ</div>
+    <div class="nav"><span class="av" id="av" aria-hidden="true"></span><span id="who" class="hm" style="color:var(--mute);margin-right:6px"></span><button class="link" id="export">Export CSV</button><button class="link" id="team">Team</button><button class="link" id="pw">Password</button><button class="link" id="logout">Log out</button></div>
+  </header>
   <main>
     <div id="defbanner" class="card hide" style="background:var(--wbg);color:var(--warn);font-weight:600;margin-bottom:12px">You are still using the default password 1234. Please <button class="link" id="defpw" style="color:inherit;text-decoration:underline">change it now</button>.</div>
     <div class="stats">
-      <div><b id="s_total">-</b><span>Total clients</span></div>
-      <div><b id="s_today">-</b><span>Last 24 hours</span></div>
-      <div><b id="s_week">-</b><span>Last 7 days</span></div>
-      <div><b id="s_issues">-</b><span>Marked "issue"</span></div>
+      <div><b id="s_total"><span class="sk" style="width:40px"></span></b><span>Total clients</span></div>
+      <div><b id="s_today"><span class="sk" style="width:30px"></span></b><span>Last 24 hours</span></div>
+      <div><b id="s_week"><span class="sk" style="width:30px"></span></b><span>Last 7 days</span></div>
+      <div class="iss"><b id="s_issues"><span class="sk" style="width:30px"></span></b><span>Marked "issue"</span></div>
     </div>
     <div class="bar">
-      <input id="q" type="search" placeholder="Search name, mobile number, email, Client ID, ID number..." aria-label="Search">
-      <select id="sf" aria-label="Status"><option value="">All statuses</option><option value="active">Active</option><option value="issue">Issue</option><option value="closed">Closed</option></select>
+      <input id="q" type="search" placeholder="Search name, mobile, email, Client ID, ID number...   ( press / )" aria-label="Search">
+    </div>
+    <div class="pills" id="pills" role="group" aria-label="Status">
+      <button class="pill on" data-s="">All</button><button class="pill" data-s="active">Active</button><button class="pill" data-s="issue">Issue</button><button class="pill" data-s="closed">Closed</button>
     </div>
     <div class="tw"><table>
-      <thead><tr><th>Client ID</th><th>Name</th><th>Mobile</th><th>Email</th><th>Signed</th><th>Status</th></tr></thead>
+      <thead><tr><th>Client ID</th><th>Name</th><th>Mobile</th><th class="hm">Email</th><th>Signed</th><th>Agreement</th><th>Status</th></tr></thead>
       <tbody id="rows"></tbody>
     </table></div>
     <div class="pg"><span id="count"></span><span><button class="link" id="prev">Previous</button> <button class="link" id="next">Next</button></span></div>
@@ -94,12 +121,15 @@ h3{font:700 1.05rem Georgia,serif;margin:18px 0 6px}
 </div>
 
 <div id="drawer"><div id="panel"></div></div>
+<div id="toast" role="status"></div>
 
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const when = (t) => (t ? new Date(t).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' }) : '-');
-let page = 0, pageSize = 25, total = 0, timer;
+let page = 0, pageSize = 25, total = 0, timer, status = '', reqId = 0;
+
+function toast(m) { const t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 2200); }
 
 async function api(action, { method = 'GET', body, params = '' } = {}) {
   const r = await fetch(`/api/admin?action=${action}${params}`, { method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
@@ -109,11 +139,12 @@ async function api(action, { method = 'GET', body, params = '' } = {}) {
   return d;
 }
 function showLogin() { $('app-view').classList.add('hide'); $('login-view').classList.remove('hide'); }
-async function showApp(me) {
-  $('login-view').classList.add('hide'); $('app-view').classList.remove('hide'); $('who').textContent = me.name;
+function showApp(me) {
+  $('login-view').classList.add('hide'); $('app-view').classList.remove('hide');
+  $('who').textContent = me.name; $('av').textContent = (me.name || '?').trim().charAt(0).toUpperCase();
   $('defbanner').classList.toggle('hide', !me.is_default);
-  const s = await api('stats');
-  $('s_total').textContent = s.total; $('s_today').textContent = s.today; $('s_week').textContent = s.week; $('s_issues').textContent = s.issues;
+  // stats and list load at the same time instead of one after the other
+  api('stats').then((s) => { $('s_total').textContent = s.total; $('s_today').textContent = s.today; $('s_week').textContent = s.week; $('s_issues').textContent = s.issues; }).catch(() => {});
   load();
 }
 
@@ -127,7 +158,8 @@ $('sf2').onsubmit = async (e) => {
   try { const d = await api('setup', { method: 'POST', body: { name: $('sn').value, phone: $('sp').value } }); showApp(d); }
   catch (x) { $('serr').textContent = x.message; }
 };
-const panel = (html) => { $('panel').innerHTML = `<div style="display:flex;justify-content:space-between"><button class="link" id="close">Close</button></div>${html}`; $('drawer').classList.add('on'); $('close').onclick = () => $('drawer').classList.remove('on'); };
+const closePanel = () => $('drawer').classList.remove('on');
+const panel = (html) => { $('panel').innerHTML = `<div style="display:flex;justify-content:space-between"><button class="link" id="close">Close</button></div>${html}`; $('drawer').classList.add('on'); $('close').onclick = closePanel; };
 function passwordPanel() {
   panel(`<h3>Change password</h3><div class="card">
     <label for="pc">Current password</label><input id="pc" type="password" autocomplete="current-password">
@@ -153,40 +185,71 @@ async function teamPanel() {
 }
 $('pw').onclick = $('defpw').onclick = passwordPanel;
 $('team').onclick = teamPanel;
+$('export').onclick = () => { location.href = '/api/admin?action=export'; toast('Preparing CSV...'); };
 $('logout').onclick = async () => { await api('logout'); showLogin(); };
 
+// ---- list: skeleton while loading, and a request counter so an older slow answer never overwrites a newer one
+const skel = () => Array.from({ length: 6 }, () => '<tr>' + '<td><span class="sk" style="width:80px"></span></td>'.repeat(1) + '<td><span class="sk" style="width:130px"></span></td><td><span class="sk" style="width:90px"></span></td><td class="hm"><span class="sk" style="width:140px"></span></td><td><span class="sk" style="width:110px"></span></td><td><span class="sk" style="width:60px"></span></td><td><span class="sk" style="width:50px"></span></td></tr>').join('');
 async function load() {
-  const p = `&page=${page}&q=${encodeURIComponent($('q').value)}&status=${$('sf').value}`;
-  const d = await api('list', { params: p });
+  const my = ++reqId;
+  if (!$('rows').children.length) $('rows').innerHTML = skel();
+  const p = `&page=${page}&q=${encodeURIComponent($('q').value)}&status=${status}`;
+  let d;
+  try { d = await api('list', { params: p }); } catch (x) { if (my === reqId && x.message !== 'auth') toast(x.message); return; }
+  if (my !== reqId) return;
   total = d.total; pageSize = d.pageSize;
-  $('rows').innerHTML = d.rows.map((r) => `<tr data-c="${esc(r.code)}"><td><b>${esc(r.code)}</b></td><td>${esc(r.full_name)}${r.business_name ? `<br><small style="color:var(--mute)">${esc(r.business_name)}</small>` : ''}</td><td>${esc(r.phone)}</td><td>${esc(r.email)}</td><td>${when(r.signed_at)}</td><td><span class="tag ${esc(r.status)}">${esc(r.status)}</span></td></tr>`).join('') || '<tr><td colspan="6" style="color:var(--mute)">No clients found.</td></tr>';
+  $('rows').innerHTML = d.rows.map((r) => `<tr data-c="${esc(r.code)}"><td><b>${esc(r.code)}</b></td><td>${esc(r.full_name)}${r.business_name ? `<br><small style="color:var(--mute)">${esc(r.business_name)}</small>` : ''}</td><td>${esc(r.phone)}</td><td class="hm">${esc(r.email)}</td><td>${when(r.signed_at)}</td><td>${r.consents?.agree_purchase ? '<span class="tag">Accepted</span>' : '<span class="tag old" title="Signed under the earlier form">Earlier form</span>'}</td><td><span class="tag ${esc(r.status)}">${esc(r.status)}</span></td></tr>`).join('') || '<tr><td colspan="7" style="color:var(--mute)">No clients found.</td></tr>';
   const from = total ? page * pageSize + 1 : 0;
   $('count').textContent = `${from}-${Math.min(total, (page + 1) * pageSize)} of ${total}`;
   $('prev').style.visibility = page > 0 ? 'visible' : 'hidden';
   $('next').style.visibility = (page + 1) * pageSize < total ? 'visible' : 'hidden';
 }
-$('q').oninput = () => { clearTimeout(timer); timer = setTimeout(() => { page = 0; load(); }, 300); };
-$('sf').onchange = () => { page = 0; load(); };
+$('q').oninput = () => { clearTimeout(timer); timer = setTimeout(() => { page = 0; load(); }, 250); };
+$('pills').onclick = (e) => {
+  const b = e.target.closest('.pill'); if (!b) return;
+  status = b.dataset.s; page = 0;
+  document.querySelectorAll('.pill').forEach((x) => x.classList.toggle('on', x === b));
+  load();
+};
 $('prev').onclick = () => { page--; load(); };
 $('next').onclick = () => { page++; load(); };
-$('rows').onclick = (e) => { const tr = e.target.closest('tr[data-c]'); if (tr) openClient(tr.dataset.c); };
+
+// ---- opening a client: start fetching when the mouse/finger lands, so it is often ready by the click
+const cache = new Map();
+const fetchClient = (code) => {
+  const hit = cache.get(code);
+  if (hit && Date.now() - hit.t < 20e3) return hit.p;
+  const p = api('get', { params: `&code=${encodeURIComponent(code)}` });
+  cache.set(code, { t: Date.now(), p });
+  p.catch(() => cache.delete(code));
+  return p;
+};
+const rowCode = (e) => e.target.closest('tr[data-c]')?.dataset.c;
+$('rows').addEventListener('pointerover', (e) => { const c = rowCode(e); if (c && !cache.has(c)) fetchClient(c).catch(() => {}); });
+$('rows').onclick = (e) => { const c = rowCode(e); if (c) openClient(c); };
 
 async function openClient(code) {
-  const c = await api('get', { params: `&code=${encodeURIComponent(code)}` });
+  let c;
+  panel('<p style="color:var(--mute)">Loading...</p>');
+  try { c = await fetchClient(code); } catch (x) { closePanel(); if (x.message !== 'auth') toast(x.message); return; }
   const row = (k, v) => `<dt>${esc(k)}</dt><dd>${esc(v || '-')}</dd>`;
   const f = (id, label, val, type = 'text') => `<div><label for="${id}">${label}</label><input id="${id}" type="${type}" value="${esc(val || '')}"></div>`;
+  const tel = (c.phone || '').replace(/[^\d+]/g, ''), wa = (c.phone || '').replace(/\D/g, '');
+  const ok = c.consents?.agree_purchase;
   $('panel').innerHTML = `
-    <div class="noprint" style="display:flex;justify-content:space-between"><button class="link" id="close">Close</button><button class="btn alt" onclick="print()">Print record</button></div>
-    <h2 style="font:700 1.5rem Georgia,serif;margin:8px 0 0">${esc(c.code)}</h2>
+    <div class="noprint" style="display:flex;justify-content:space-between"><button class="link" id="close">Close</button><button class="btn alt sm" onclick="print()">Print record</button></div>
+    <h2 style="font:700 1.5rem Georgia,serif;margin:8px 0 0">${esc(c.code)} <button class="link noprint" id="copycode" title="Copy Client ID">Copy</button></h2>
     <p style="margin:0;color:var(--mute)">Axion DMS Software Sale and Setup Agreement - signed record</p>
+    <div class="agreed ${ok ? '' : 'no'}">${ok ? '&#10003; Agreed to purchase the code under the agreement - version ' + esc(c.consents.accepted_version || c.agreement_version) : 'Signed under the earlier form (no separate "agree to purchase" box)'}</div>
     <div class="card" style="margin-top:12px"><dl>
       ${row('Name', c.full_name)}${row('Business', c.business_name)}${row('Email', c.email)}${row('Mobile', c.phone)}${row('Address', c.address)}${row(c.id_type, c.id_number)}
-    </dl></div>
+    </dl>
+    <div class="acts noprint"><a class="btn alt sm" href="tel:${esc(tel)}">Call</a><a class="btn alt sm" target="_blank" rel="noopener" href="https://wa.me/${esc(wa)}">WhatsApp</a><a class="btn alt sm" href="mailto:${esc(c.email)}">Email</a></div></div>
     <h3>Signature and evidence</h3>
     <div class="card"><img class="sig" src="${esc(c.signature_data)}" alt="Signature"><dl>
       ${row('Initials', c.initials)}${row('Signed at', when(c.signed_at) + ' (Dhaka time)')}${row('Agreement version', c.agreement_version)}
       ${row('Document SHA-256', c.agreement_sha256)}${row('IP address', c.ip)}${row('Device', c.user_agent)}
-      ${row('Confirmed', 'Read agreement: ' + (c.consents?.read ? 'yes' : 'no') + ' | Understood key points: ' + (c.consents?.understood ? 'yes' : 'no') + ' | Details true and e-signature accepted: ' + (c.consents?.accurate ? 'yes' : 'no'))}
+      ${row('Confirmed', 'Opened the agreement PDF: ' + (c.consents?.opened_pdf ? 'yes' : 'not recorded') + ' | Read and agreed to purchase: ' + (c.consents?.agree_purchase || c.consents?.read ? 'yes' : 'no') + ' | Understood key points: ' + (c.consents?.understood ? 'yes' : 'no') + ' | Details true and e-signature accepted: ' + (c.consents?.accurate ? 'yes' : 'no'))}
     </dl>${c.photo_url ? `<p class="noprint" style="margin:8px 0 4px;color:var(--mute)">ID photo (link expires in 5 minutes)</p><a class="noprint" href="${esc(c.photo_url)}" target="_blank" rel="noopener"><img class="idimg" src="${esc(c.photo_url)}" alt="ID photo"></a>` : ''}</div>
     <div class="noprint">
     <h3>Handover and internal notes</h3>
@@ -201,16 +264,22 @@ async function openClient(code) {
       <button class="btn" id="save">Save changes</button> <span id="saved" style="margin-left:8px;font-weight:600"></span>
       ${c.updated_by ? `<p style="color:var(--mute);font-size:.85rem">Last changed by ${esc(c.updated_by)} on ${when(c.updated_at)}</p>` : ''}
     </div></div>`;
-  $('drawer').classList.add('on');
-  $('close').onclick = () => $('drawer').classList.remove('on');
+  $('close').onclick = closePanel;
+  $('copycode').onclick = () => { navigator.clipboard?.writeText(c.code).then(() => toast('Client ID copied')).catch(() => {}); };
   $('save').onclick = async () => {
+    $('save').disabled = true;
     try {
       await api('update', { method: 'POST', body: { code, fields: { status: $('e_status').value, live_url: $('e_live').value, handover_date: $('e_handover').value, github_user: $('e_gh').value, vercel_user: $('e_vc').value, supabase_project: $('e_sb').value, notes: $('e_notes').value } } });
-      $('saved').style.color = 'var(--acc)'; $('saved').textContent = 'Saved'; load();
+      cache.delete(code); $('saved').textContent = ''; toast('Saved'); load();
     } catch (x) { $('saved').style.color = 'var(--err)'; $('saved').textContent = x.message; }
+    $('save').disabled = false;
   };
 }
-$('drawer').onclick = (e) => { if (e.target.id === 'drawer') $('drawer').classList.remove('on'); };
+$('drawer').onclick = (e) => { if (e.target.id === 'drawer') closePanel(); };
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePanel();
+  if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !$('app-view').classList.contains('hide')) { e.preventDefault(); $('q').focus(); }
+});
 
 (async () => {
   try { showApp(await api('me')); }
